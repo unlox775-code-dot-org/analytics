@@ -1,133 +1,64 @@
 version: 2
 
 models: 
-  - name: dim_feature_feedback
-    description: this model contains all the feedback we get from students and teachers about particular features or products (e.g. AI Tutor).  
-    columns: 
-      - name: feedback_id 
-        description: unique identifier for the feedback submission 
-        data_tests: 
-          - unique
-          - not_null
-      - name: feature_name
-        description: the name of the feature that the feedback is about 
-      - name: user_id
-        description: unique idenitfier for users who submitted feedback, can map to student_id and teacher_id in other models
-      - name: satisfied
-        description: 1 if the user indicated they are satisfied, 0 if user indicated they are disastified, null if not selected
-      - name: details
-        description: the notes inputed by the user submitting feedback
-      - name: created_at
-        description: timestamp for when the feedback was submitted 
-      - name: school_year 
-        description: the school year in which the feedback was submitted 
-    config:
-      tags: ['released']
-  - name: dim_users 
-    description: |
-      One row per user + user_geos + user pii. 
-
-    columns: 
-      - name: user_id
-        description: UID for each user
-        data_tests: 
-          - not_null
-
-      # - name: user_type
-      #   description: student or teacher if NULL = fail
-      #       # - accepted_values:
-      #       #     values: ['teacher','student']
-      #   data_tests: 
-      #       - not_null
-
-      - name: us_state
-        description: user entered value extracted from json. values must be within contig. US else null 
-
-      - name: student_id 
-        description: UID for each student
-      
-      - name: teacher_id 
-        description: UID for each teacher
-
-      - name: races
-        description: raw value for race 
-        tags: 
-          - contains_pii
-
-      - name: race_group
-        description: race categorization column
-        tags: 
-          - contains_pii
-      
-      - name: gender 
-        description: raw value for gender
-        tags: 
-          - contains_pii
-      
-      - name: gender_group
-        description: gender categorization column
-        tags: 
-          - contains_pii
-
-      - name: cap_status
-        description: child account policy tag; only relevant for students (options are 'grace period', 'locked_out', 'permission_granted')
-          
-      - name: cap_status_date
-        description: child account policy tag; 
-
-    config:
-      tags: ['released']
-
-  # - name: dim_user_surveys
-  #   description: modeling survey data 
-  #   columns: 
-  #     - name: user_id 
-  #       data_tests: 
-  #         - not_null
-  #     - name: section_id 
-  #       data_tests: 
-  #         - not_null
-
-  # - name: dim_user_levels 
-  #   description: |
-  #     Adds more columns to the base user_levels table. 
-  #   columns:
-  #   - name: user_id
-  #     description: the unique user ID associated with the activity
-  #     data_tests:
-  #       - not_null
-    
   - name: dim_user_course_activity
-    description: |
-      This model is a log of all student- and teacher-course activity within a school year.   
+    columns:
+    - name: course_name
+    - name: first_activity_at
+    - name: user_id
+    - name: school_year
 
-      Grain: user_id, school_year, course_name
+  - name: dim_course_structure
+    columns:
+    - name: level_id
+    - name: script_id
+    - name: course_name
+
+  - name: dim_users
     columns:
     - name: user_id
-      description: unique ID for teacher or student
+      description: UID for each user
+      data_tests: 
+        - not_null
 
     - name: user_type
-      description: student or teacher
+      description: student or teacher if NULL = fail
+          # - accepted_values:
+          #     values: ['teacher','student']
+      data_tests: 
+          - not_null
+
+    - name: us_state
+      description: user entered value extracted from json. values must be within contig. US else null 
+
+    - name: student_id 
+      description: UID for each student
     
-    - name: school_year
-      description: the school year in which the course activity was in
-      data_tests:
-        - not_null 
+    - name: teacher_id 
+      description: UID for each teacher
+
+    - name: races
+      description: raw value for race 
+      tags: 
+        - contains_pii
+
+    - name: race_group
+      description: race categorization column
+      tags: 
+        - contains_pii
+    
+    - name: gender 
+      description: raw value for gender
+      tags: 
+        - contains_pii
+    
+    - name: gender_group
+      description: gender categorization column
+      tags: 
+        - contains_pii
+
+    - name: cap_status
+      description: child account policy tag; only relevant for students (options are 'grace period', 'locked_out', 'permission_granted')
         
-    - name: course_name
-      description: the course associated with the individual user's activity in a given school year
-
-    - name: us_intl
-      description: label for us / intl 
-
-    - name: country
-      description: the country associated with the individual user's activity in a given school year
-    
-    - name: first_activity_at
-      description: timestamp of the student's first activity within the given course and school year- this field is later used to determine when a section/school first started teaching
-    
-    - name: last_activity_at 
-      description: timestamp of the student's latest activity within the given course and school year
-  
-    config:
-      tags: ['released']
+    - name: cap_status_date
+      description: child account policy tag; 

@@ -1,48 +1,22 @@
 version: 2
 
-models: 
+models:
   - name: dim_course_names
-    description: distinct list of course names sourced via seed file 
-
-  - name: dim_course_structure
-    description: course information about every level/script combination
-    columns: 
-      - name: level_id
-        description: |
-          This field includes a hard coded error correction, 
-          level_script_levels defines the first level of this script as 
-          id '14633' when user_levels defines this level as '1'...
-    config:
-      tags: ['released']
-
-
-  - name: dim_levels
-    description: dimensional table to provide attrtibution to levels data
-    columns: 
-      - name: level_id
-        description: uid for this model, 1 row per level_id
-        data_tests: 
-          - unique
-          - not_null
+    columns:
+    - name: versioned_course_id
+    - name: versioned_course_name
+    - name: course_name_short
+    - name: course_name_long
 
   - name: dim_script_names
-    description: distinct list of script names provided via seed file
-    columns: 
-      - name: versioned_script_id
-        description: uid for script by school year
-        data_tests: 
-          - unique
-          - not_null
+    columns:
+    - name: versioned_script_id
+    - name: versioned_script_name
+    - name: script_name_short
+    - name: script_name_long
 
-  - name: dim_level_concept_difficulties
-    description: a full listing of every level in course structure showing the mapping to any/all "concepts and difficulties" for use in the "coding proficiency" metric.  
-    columns: 
-      - name: level_id
-        description: id of the level being mapped
-
-      - name: has_lcd_mapping
-        description: bit field does this level have a mapping for concept-difficulty
-      
-      - name: course_family
-        description: the short name for which course this script/level combo belongs to e.g. csf, csd, csp, csa, hoc, etc.
-
+  - name: dim_course_structure
+    columns:
+    - name: level_id
+    - name: script_id
+    - name: course_name
