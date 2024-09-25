@@ -10,7 +10,7 @@ models:
       - name: country
       - name: course_name
       - name: first_activity_at
-		  - name: last_activity_at
+      - name: last_activity_at
 
   - name: dim_course_structure
     columns:
