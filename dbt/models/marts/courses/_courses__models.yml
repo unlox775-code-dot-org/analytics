@@ -20,7 +20,7 @@ models:
       - name: course_id
       - name: course_name_full
       - name: course_name
-      - name: is_self_paced_pd,   
+      - name: is_self_paced_pd
       - name: is_student_content
       - name: is_pd_content
       - name: is_active_student_course
@@ -47,7 +47,7 @@ models:
       - name: is_parent_level
       - name: is_group_level
       - name: group_level_type
-      - name: family_name,
+      - name: family_name
       - name: version_year
       - name: published_state
       - name: instruction_type

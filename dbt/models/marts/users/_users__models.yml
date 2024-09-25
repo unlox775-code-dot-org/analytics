@@ -31,12 +31,12 @@ models:
       - name: locale
       - name: birthday
       - name: sign_in_count
-      - name: total_lines,    
+      - name: total_lines
       - name: current_sign_in_at
       - name: last_sign_in_at
       - name: created_at
-      - name: updated_at, 
-      - name: deleted_at,  
+      - name: updated_at
+      - name: deleted_at
       - name: purged_at
       - name: cap_status
       - name: cap_status_date

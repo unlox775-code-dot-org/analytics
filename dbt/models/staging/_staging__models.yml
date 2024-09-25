@@ -278,6 +278,9 @@ models:
       - name: course_script_id
       - name: course_id
       - name: script_id
+      - name: position
+      - name: experiment_name
+      - name: default_script_id
 
   - name: stg_dashboard__unit_groups
     columns: 
@@ -317,12 +320,12 @@ models:
       - name: locale
       - name: birthday
       - name: sign_in_count
-      - name: total_lines,    
+      - name: total_lines 
       - name: current_sign_in_at
       - name: last_sign_in_at
       - name: created_at
-      - name: updated_at, 
-      - name: deleted_at,  
+      - name: updated_at
+      - name: deleted_at
       - name: purged_at
       - name: cap_status
       - name: cap_status_date
