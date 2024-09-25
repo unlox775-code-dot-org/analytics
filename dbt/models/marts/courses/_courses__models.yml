@@ -17,6 +17,40 @@ models:
 
   - name: dim_course_structure
     columns:
-    - name: level_id
-    - name: script_id
-    - name: course_name
+      - name: course_id
+      - name: course_name_full
+      - name: course_name
+      - name: is_self_paced_pd,   
+      - name: is_student_content
+      - name: is_pd_content
+      - name: is_active_student_course
+      - name: script_id
+      - name: script_name
+      - name: is_standalone
+      - name: unit
+      - name: stage_id
+      - name: stage_name
+      - name: stage_number
+      - name: relative_position
+      - name: is_lockable
+      - name: is_unplugged
+      - name: level_number
+      - name: level_id
+      - name: level_script_order
+      - name: level_name
+      - name: level_type
+      - name: mini_rubric
+      - name: is_free_play
+      - name: project_template_level_name
+      - name: is_submittable
+      - name: parent_level_kind
+      - name: is_parent_level
+      - name: is_group_level
+      - name: group_level_type
+      - name: family_name,
+      - name: version_year
+      - name: published_state
+      - name: instruction_type
+      - name: instructor_audience
+      - name: participant_audience
+      - name: updated_at

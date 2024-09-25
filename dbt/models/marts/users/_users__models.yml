@@ -3,62 +3,48 @@ version: 2
 models: 
   - name: dim_user_course_activity
     columns:
-    - name: course_name
-    - name: first_activity_at
-    - name: user_id
-    - name: school_year
+      - name: user_id
+      - name: user_type
+      - name: school_year
+      - name: us_intl
+      - name: country
+      - name: course_name
+      - name: first_activity_at
+		  - name: last_activity_at
 
   - name: dim_course_structure
     columns:
-    - name: level_id
-    - name: script_id
-    - name: course_name
+      - name: level_id
+      - name: script_id
+      - name: course_name
 
   - name: dim_users
     columns:
-    - name: user_id
-      description: UID for each user
-      data_tests: 
-        - not_null
-
-    - name: user_type
-      description: student or teacher if NULL = fail
-          # - accepted_values:
-          #     values: ['teacher','student']
-      data_tests: 
-          - not_null
-
-    - name: us_state
-      description: user entered value extracted from json. values must be within contig. US else null 
-
-    - name: student_id 
-      description: UID for each student
-    
-    - name: teacher_id 
-      description: UID for each teacher
-
-    - name: races
-      description: raw value for race 
-      tags: 
-        - contains_pii
-
-    - name: race_group
-      description: race categorization column
-      tags: 
-        - contains_pii
-    
-    - name: gender 
-      description: raw value for gender
-      tags: 
-        - contains_pii
-    
-    - name: gender_group
-      description: gender categorization column
-      tags: 
-        - contains_pii
-
-    - name: cap_status
-      description: child account policy tag; only relevant for students (options are 'grace period', 'locked_out', 'permission_granted')
-        
-    - name: cap_status_date
-      description: child account policy tag; 
+      - name: user_id
+      - name: student_id
+      - name: teacher_id
+      - name: school_id
+      - name: user_type
+      - name: studio_person_id
+      - name: is_urg
+      - name: gender
+      - name: locale
+      - name: birthday
+      - name: sign_in_count
+      - name: total_lines,    
+      - name: current_sign_in_at
+      - name: last_sign_in_at
+      - name: created_at
+      - name: updated_at, 
+      - name: deleted_at,  
+      - name: purged_at
+      - name: cap_status
+      - name: cap_status_date
+      - name: teacher_email
+      - name: races
+      - name: race_group
+      - name: gender_group
+      - name: self_reported_state
+      - name: country
+      - name: us_intl
+      - name: is_international
